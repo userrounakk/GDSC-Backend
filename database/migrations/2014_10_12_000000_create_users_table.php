@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('username')->unique();
-            $table->string('avatar')->nullable();
-            $table->string("cover")->nullable();
+            $table->text('avatar')->nullable();
+            $table->text("cover")->nullable();
             $table->string("bio")->nullable();
             $table->string("phone")->unique()->nullable();
             $table->dateTime('dob')->nullable();

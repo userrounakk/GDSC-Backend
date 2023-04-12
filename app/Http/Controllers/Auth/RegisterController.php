@@ -68,6 +68,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'username' => explode("@", $data['email'])[0],
+            'avatar' => 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($data['email']))) . '?d=mp&s=200',
+            'cover' => 'https://source.unsplash.com/random/1920x1080?nature,water',
         ]);
     }
 }
