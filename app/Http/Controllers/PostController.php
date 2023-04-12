@@ -29,7 +29,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->decription == null && $request->image == null) {
+            return redirect()->back()->with("msg", "Post cannot be empty.");
+        }
+        $post = new Post();
+        $post->description = $request->description;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/posts');
+            $image->move($destinationPath, $name);
+            $post->image = $name;
+        }
+        $post->user_id = auth()->id();
+        $post->save();
+        return redirect()->back()->with("success", "Post created successfully.");
     }
 
     /**

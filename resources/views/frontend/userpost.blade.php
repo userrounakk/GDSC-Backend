@@ -37,10 +37,9 @@
             <!-- Card header END -->
             <!-- Card body START -->
             <div class="card-body">
-                <p>I'm thrilled to share that I've completed a graduate certificate course in project
-                    management with the president's honor roll.</p>
+                <p>{{ $post->description }}</p>
                 <!-- Card img -->
-                <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
+                <img class="card-img" src="/images/posts/{{ $post->image }}" alt="Post">
             </div>
             <!-- Card body END -->
         </div>

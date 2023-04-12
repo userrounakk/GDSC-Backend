@@ -25,3 +25,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/user/update', [App\Http\Controllers\UserController::class, 'edit'])->name('profile');
 Route::resource('/user', App\Http\Controllers\UserController::class);
 Route::get('/{username}/posts', [PostController::class, 'show'])->name('posts');
+Route::resource('/post', PostController::class);

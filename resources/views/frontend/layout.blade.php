@@ -356,11 +356,22 @@ Header END -->
                             <!-- Post input -->
                             <form class="w-100">
                                 <textarea class="form-control pe-4 border-0" rows="2" data-autoresize placeholder="Share your thoughts..."
-                                    data-bs-toggle="modal" onclick="document.getElementById('pic-modal').click()"></textarea>
+                                    data-bs-toggle="modal" name="description" onclick="document.getElementById('pic-modal').click()"></textarea>
                             </form>
                         </div>
+                        <br>
+                        @if (\Session::has('msg'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('msg') }}
+                            </div>
+                        @endif
+                        @if (\Session::has('success'))
+                            <div class="alert alert-success" role="alert">
+                                {{ Session::get('success') }}
+                            </div>
+                        @endif
                         <!-- Share feed toolbar START -->
-                        <ul class="nav nav-pills nav-stack small fw-normal">
+                        <ul class="nav nav-pills nav-stack small fw-normal d-none">
                             <li class="nav-item">
                                 <a class="nav-link bg-light py-1 px-2 mb-0" href="#!" data-bs-toggle="modal"
                                     data-bs-target="#feedActionPhoto"> <i class="bi bi-image-fill text-success pe-2"
@@ -437,61 +448,74 @@ Header END -->
     <!-- Main Chat START -->
 
     <!-- Modal create Feed photo START -->
-    <div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <!-- Modal feed header START -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="feedActionPhotoLabel">Create Post</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <!-- Modal feed header END -->
+    <form class="" method="post" enctype="multipart/form-data" action="/post">
+        @csrf
+        <div class="modal fade" id="feedActionPhoto" tabindex="-1" aria-labelledby="feedActionPhotoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <!-- Modal feed header START -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="feedActionPhotoLabel">Create Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <!-- Modal feed header END -->
 
-                <!-- Modal feed body START -->
-                <div class="modal-body">
-                    <!-- Add Feed -->
-                    <div class="d-flex mb-3">
-                        <!-- Avatar -->
-                        <div class="avatar avatar-xs me-2">
-                            <img class="avatar-img rounded-circle" src="{{ $user->avatar }}" alt="">
+                    <!-- Modal feed body START -->
+                    <div class="modal-body">
+                        <!-- Add Feed -->
+
+                        <div class="d-flex mb-3">
+                            <!-- Avatar -->
+                            <div class="avatar avatar-xs me-2">
+                                <img class="avatar-img rounded-circle" src="{{ $user->avatar }}" alt="">
+                            </div>
+                            <!-- Feed box  -->
+
+                            <textarea name="description" class="form-control pe-4 fs-3 lh-1 border-0" rows="2"
+                                placeholder="Share your thoughts..."></textarea>
                         </div>
-                        <!-- Feed box  -->
-                        <form class="w-100">
-                            <textarea class="form-control pe-4 fs-3 lh-1 border-0" rows="2" placeholder="Share your thoughts..."></textarea>
-                        </form>
-                    </div>
+                        <!-- Dropzone photo START -->
 
-                    <!-- Dropzone photo START -->
-                    <div class="card">
-                        <img src="" alt="" srcset="" id="imagePreview" class="w-100">
-                    </div>
-                    <div>
-
-                        <label class="form-label">Upload attachment</label><br>
-                        {{-- <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
+                        <div class="card mt-2">
+                            <img src="" alt="" srcset="" id="imagePreview" class="w-100">
+                        </div>
+                        <div class="mt-5">
+                            <label class="form-label">Upload attachment</label><br>
+                            {{-- <div class="dropzone dropzone-default card shadow-none" data-dropzone='{"maxFiles":1}'>
                             <div class="dz-message">
                                 <i class="bi bi-images display-3"></i>
                                 <p>Drag here or click to upload photo.</p>
                             </div>
                         </div> --}}
-                        {{-- input image preview --}}
-                        <input type="file" name="image" id="inpFile" accept="image/*">
+                            {{-- input image preview --}}
+                            <input type="file" name="image" id="inpFile" accept="image/*">
+                        </div>
+                        <!-- Dropzone photo END -->
+
+
+
+                        <div class="modal-footer ">
+                            <!-- Button -->
+                            <button type="button" class="btn btn-danger-soft me-2"
+                                data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-success-soft">Post</button>
+                        </div>
+
                     </div>
-                    <!-- Dropzone photo END -->
+    </form>
 
-                </div>
-                <!-- Modal feed body END -->
 
-                <!-- Modal feed footer -->
-                <div class="modal-footer ">
-                    <!-- Button -->
-                    <button type="button" class="btn btn-danger-soft me-2" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-success-soft">Post</button>
-                </div>
-                <!-- Modal feed footer -->
-            </div>
-        </div>
+
+    </div>
+    <!-- Modal feed body END -->
+
+    <!-- Modal feed footer -->
+
+    <!-- Modal feed footer -->
+    </div>
+    </div>
     </div>
     <!-- Modal create Feed photo END -->
 
