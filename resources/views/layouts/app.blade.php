@@ -89,8 +89,8 @@
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Webestica.com">
-    <meta name="description" content="Bootstrap 5 based Social Media Network and Community Theme">
+    <meta name="author" content="Rounak">
+    <meta name="description" content="Social Media Platform">
 
     <!-- Dark mode -->
     <script>
