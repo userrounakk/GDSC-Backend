@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -69,5 +69,62 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+    <!-- Sign in form START -->
+    <div class="card card-body p-4 p-sm-5 mt-sm-n5 mb-n5">
+        <!-- Title -->
+        <h2 class="h1 mb-2">Sign in</h2>
+        <p>Don't have an account?<a href="/register"> Click here to sign up</a></p>
+        <!-- Form START -->
+        <form class="mt-4" method="POST" action="{{ route('login') }}">
+            @csrf
+            <!-- Email -->
+            <div class="mb-3 position-relative input-group-lg">
+                <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Enter email"
+                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+            <!-- password -->
+            <div class="mb-3">
+                <!-- Input group -->
+                <div class="input-group input-group-lg">
+                    <input class="form-control fakepassword @error('password') is-invalid @enderror" type="password"
+                        id="psw-input" placeholder="Enter your password" name="password" required
+                        autocomplete="current-password">
+                    <span class="input-group-text p-0">
+                        <i class="fakepasswordicon fa-solid fa-eye-slash cursor-pointer p-2 w-40px"></i>
+                    </span>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <!-- Remember me -->
+            <div class="mb-3 d-sm-flex justify-content-between">
+                <div>
+                    <input type="checkbox" class="form-check-input" id="rememberCheck" name="remember"
+                        {{ old('remember') ? 'checked' : '' }}>
+                    <label class="form-check-label" for="rememberCheck">Remember me?</label>
+                </div>
+                <a href="forgot-password.html">Forgot password?</a>
+            </div>
+            <!-- Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-lg btn-primary-soft">Login</button>
+            </div>
+            <!-- Copyright -->
+            <p class="mb-0 mt-3 text-center">©2023 <a target="_blank" href="https://www.userrounakk.com/">GDSC Social.</a>
+                All
+                rights reserved</p>
+        </form>
+        <!-- Form END -->
+    </div>
+    <!-- Sign in form START -->
 @endsection

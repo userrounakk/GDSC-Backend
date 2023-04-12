@@ -6,7 +6,7 @@
         <div class="text-center">
             <!-- Title -->
             <h2 class="h1 mb-2">Sign up</h2>
-            <span class="d-block">Already have an account? <a href="sign-in.html">Sign in
+            <span class="d-block">Already have an account? <a href="/login">Sign in
                     here</a></span>
         </div>
         <!-- Form START -->
