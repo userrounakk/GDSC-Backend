@@ -303,20 +303,18 @@ Header END -->
                                         <!-- Side Nav START -->
                                         <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="my-profile.html"> <img
-                                                        class="me-2 h-20px fa-fw"
+                                                <a class="nav-link" href="/home"> <img class="me-2 h-20px fa-fw"
                                                         src="/assets/images/icon/home-outline-filled.svg"
                                                         alt=""><span>Feed </span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="my-profile-connections.html"> <img
+                                                <a class="nav-link" href="/{{ Auth::user()->username }}/posts"> <img
                                                         class="me-2 h-20px fa-fw"
                                                         src="/assets/images/icon/person-outline-filled.svg"
                                                         alt=""><span>My Posts </span></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="settings.html"> <img
-                                                        class="me-2 h-20px fa-fw"
+                                                <a class="nav-link" href="/profile"> <img class="me-2 h-20px fa-fw"
                                                         src="/assets/images/icon/cog-outline-filled.svg"
                                                         alt=""><span>Settings </span></a>
                                             </li>
@@ -417,7 +415,8 @@ Header END -->
                                             </div>
                                             <!-- Button -->
                                             <a class="btn btn-primary-soft rounded-circle icon-md ms-auto"
-                                                href="#"><i class="fa-solid fa-circle-nodes"> </i></a>
+                                                href="/{{ $u->username }}/posts"><i
+                                                    class="fa-solid fa-circle-nodes"> </i></a>
                                         </div>
                                         <!-- Connection item END -->
                                     @endforeach
@@ -504,6 +503,9 @@ Header END -->
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </div>
     </form>
 
 
@@ -514,9 +516,7 @@ Header END -->
     <!-- Modal feed footer -->
 
     <!-- Modal feed footer -->
-    </div>
-    </div>
-    </div>
+
     <!-- Modal create Feed photo END -->
 
     <!-- =======================

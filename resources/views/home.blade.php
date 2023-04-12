@@ -37,6 +37,9 @@
         </div>
     @endif
     @foreach ($posts as $post)
+        @if ($post->user->id == Auth::user()->id)
+            @continue;
+        @endif
         <!-- Card feed item START -->
         <div class="card">
             <!-- Card header START -->
@@ -51,7 +54,8 @@
                         <!-- Info -->
                         <div>
                             <div class="nav nav-divider">
-                                <h6 class="nav-item card-title mb-0"> <a href="#!"> {{ $post->user->name }}
+                                <h6 class="nav-item card-title mb-0"> <a href="/{{ $post->user->username }}/posts">
+                                        {{ $post->user->name }}
                                     </a></h6>
                                 <span class="nav-item small">
                                     {{ Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
@@ -64,10 +68,11 @@
             <!-- Card header END -->
             <!-- Card body START -->
             <div class="card-body">
-                <p>I'm thrilled to share that I've completed a graduate certificate course in project
-                    management with the president's honor roll.</p>
+                <p>{{ $post->description }}</p>
                 <!-- Card img -->
-                <img class="card-img" src="assets/images/post/3by2/01.jpg" alt="Post">
+                @if ($post->image)
+                    <img class="card-img" src="/images/posts/{{ $post->image }}" alt="Post">
+                @endif
             </div>
             <!-- Card body END -->
         </div>

@@ -28,7 +28,7 @@ class HomeController extends Controller
         if (auth()->check()) {
             $user = auth()->user();
             $users = User::all()->except($user->id)->take(5);
-            $posts = Post::all();
+            $posts = Post::all()->reverse();
             return view('home', compact('user', 'users', 'posts'));
         } else {
             return redirect()->route('login');
