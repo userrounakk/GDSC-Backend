@@ -23,6 +23,7 @@ return new class extends Migration
             $table->dateTime('dob')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('profile_updated')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
