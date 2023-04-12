@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user/update', [App\Http\Controllers\UserController::class, 'edit'])->name('profile');
 Route::resource('/user', App\Http\Controllers\UserController::class);
+Route::get('/{username}/posts', [PostController::class, 'show'])->name('posts');

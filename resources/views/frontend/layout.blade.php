@@ -70,7 +70,7 @@
     </script>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -78,19 +78,20 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/tiny-slider/dist/tiny-slider.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/choices.js/public/assets/styles/choices.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/glightbox-master/dist/css/glightbox.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/dropzone/dist/dropzone.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/flatpickr/dist/flatpickr.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/plyr/plyr.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendor/zuck.js/dist/zuck.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/OverlayScrollbars-master/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/tiny-slider/dist/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/glightbox-master/dist/css/glightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/dropzone/dist/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/flatpickr/dist/flatpickr.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/plyr/plyr.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendor/zuck.js/dist/zuck.min.css">
 
     <!-- Theme CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 </head>
 
 <body>
@@ -104,8 +105,8 @@ Header START -->
             <div class="container">
                 <!-- Logo START -->
                 <a class="navbar-brand" href="index-2.html">
-                    <img class="light-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
-                    <img class="dark-mode-item navbar-brand-item" src="assets/images/logo.svg" alt="logo">
+                    <img class="light-mode-item navbar-brand-item" src="/assets/images/logo.svg" alt="logo">
+                    <img class="dark-mode-item navbar-brand-item" src="/assets/images/logo.svg" alt="logo">
                 </a>
                 <!-- Logo END -->
 
@@ -154,7 +155,7 @@ Header START -->
                         <a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button"
                             data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <img class="avatar-img rounded-2" src="{{ $user->avatar }}" alt="">
+                            <img class="avatar-img rounded-2" src="{{ Auth::user()->avatar }}" alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-animation dropdown-menu-end pt-3 small me-md-n3"
                             aria-labelledby="profileDropdown">
@@ -163,11 +164,11 @@ Header START -->
                                 <div class="d-flex align-items-center position-relative">
                                     <!-- Avatar -->
                                     <div class="avatar me-3">
-                                        <img class="avatar-img rounded-circle" src="{{ $user->avatar }}"
+                                        <img class="avatar-img rounded-circle" src="{{ Auth::user()->avatar }}"
                                             alt="avatar">
                                     </div>
                                     <div>
-                                        <a class="h6 stretched-link" href="#">{{ $user->name }}</a>
+                                        <a class="h6 stretched-link" href="#">{{ Auth::user()->name }}</a>
                                     </div>
                                 </div>
                                 {{-- TODO: Profile Update Link  --}}
@@ -279,7 +280,7 @@ Header END -->
                                 <div class="card overflow-hidden">
                                     <!-- Cover image -->
                                     <div class="h-50px"
-                                        style="background-image:url({{ $user->cover }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                                        style="background-image:url({{ Auth::user()->cover }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
                                     </div>
                                     <!-- Card body START -->
                                     <div class="card-body pt-0">
@@ -288,11 +289,11 @@ Header END -->
                                             <div class="avatar avatar-lg mt-n5 mb-3">
                                                 <a href="#!"><img
                                                         class="avatar-img rounded border border-white border-3"
-                                                        src="{{ $user->avatar }}" alt=""></a>
+                                                        src="{{ Auth::user()->avatar }}" alt=""></a>
                                             </div>
                                             <!-- Info -->
-                                            <h5 class="mb-0"> <a href="#!">{{ $user->name }} </a> </h5>
-                                            <p class="mt-3">{{ $user->bio }}</p>
+                                            <h5 class="mb-0"> <a href="#!">{{ Auth::user()->name }} </a> </h5>
+                                            <p class="mt-3">{{ Auth::user()->bio }}</p>
 
                                         </div>
 
@@ -304,19 +305,19 @@ Header END -->
                                             <li class="nav-item">
                                                 <a class="nav-link" href="my-profile.html"> <img
                                                         class="me-2 h-20px fa-fw"
-                                                        src="assets/images/icon/home-outline-filled.svg"
+                                                        src="/assets/images/icon/home-outline-filled.svg"
                                                         alt=""><span>Feed </span></a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="my-profile-connections.html"> <img
                                                         class="me-2 h-20px fa-fw"
-                                                        src="assets/images/icon/person-outline-filled.svg"
+                                                        src="/assets/images/icon/person-outline-filled.svg"
                                                         alt=""><span>My Posts </span></a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link" href="settings.html"> <img
                                                         class="me-2 h-20px fa-fw"
-                                                        src="assets/images/icon/cog-outline-filled.svg"
+                                                        src="/assets/images/icon/cog-outline-filled.svg"
                                                         alt=""><span>Settings </span></a>
                                             </li>
                                         </ul>
@@ -498,21 +499,21 @@ Header END -->
 JS libraries, plugins and custom scripts -->
 
     <!-- Bootstrap JS -->
-    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Vendors -->
-    <script src="assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
-    <script src="assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
-    <script src="assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
-    <script src="assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
-    <script src="assets/vendor/plyr/plyr.js"></script>
-    <script src="assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
-    <script src="assets/vendor/zuck.js/dist/zuck.min.js"></script>
-    <script src="assets/js/zuck-stories.js"></script>
+    <script src="/assets/vendor/tiny-slider/dist/tiny-slider.js"></script>
+    <script src="/assets/vendor/OverlayScrollbars-master/js/OverlayScrollbars.min.js"></script>
+    <script src="/assets/vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="/assets/vendor/glightbox-master/dist/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="/assets/vendor/plyr/plyr.js"></script>
+    <script src="/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="/assets/vendor/zuck.js/dist/zuck.min.js"></script>
+    <script src="/assets/js/zuck-stories.js"></script>
 
     <!-- Theme Functions -->
-    <script src="assets/js/functions.js"></script>
+    <script src="/assets/js/functions.js"></script>
 
     <script>
         // Preview Script

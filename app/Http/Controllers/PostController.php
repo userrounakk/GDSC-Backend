@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -34,9 +35,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $username)
     {
-        //
+        $user = User::where('username', $username)->first();
+        $users = User::all()->except(auth()->id())->take(5);
+        $posts = Post::where('user_id', $user->id)->get();
+        return view('frontend.userpost', compact('user', 'users', 'posts'));
     }
 
     /**
